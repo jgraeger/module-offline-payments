@@ -5,7 +5,7 @@
         @endif
 
         @if (!empty($setting['description']))
-            <div class="well well-sm">{{ $setting['description'] }}</div>
+            <div class="card card-body bg-light">{{ $setting['description'] }}</div>
         @endif
     </div>
     <br>
