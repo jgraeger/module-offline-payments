@@ -15,7 +15,7 @@ class Main extends Provider
      */
     public function boot()
     {
-        Blade::directive(Markdown::class, function ($expression) {
+        Blade::directive('markdown', function ($expression) {
             return "<?php echo app('markdown-parser')->text($expression); ?>";
         });
 
