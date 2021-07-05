@@ -14,5 +14,8 @@
         "test": [
             "composer install --prefer-dist --no-interaction --no-scripts --no-suggest --no-progress --no-ansi"
         ]
+    },
+    "require": {
+        "erusev/parsedown-extra": "^0.8.1"
     }
 }

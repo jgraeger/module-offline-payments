@@ -5,7 +5,11 @@
         @endif
 
         @if (!empty($setting['description']))
-            <div class="card card-body bg-light">{{ $setting['description'] }}</div>
+	    <div class="card card-body">
+                <p class="card-text">
+		    {{!! (new ParsedownExtra)->text($setting['description'])  !!}}
+                </p>
+            </div>
         @endif
     </div>
     <br>
