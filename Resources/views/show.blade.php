@@ -14,7 +14,7 @@
     </div>
     <br>
     
-    @if (Auth::check() && Auth::user()->contact_id === $invoice->contact_id)
+    @if ($confirm_url)
         <div class="buttons">
             <div class="pull-right">
                 {!! Form::open([

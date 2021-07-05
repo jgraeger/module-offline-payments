@@ -3,10 +3,11 @@
 namespace Modules\OfflinePayments\Http\Controllers;
 
 use App\Abstracts\Http\PaymentController;
-use \App\Events\Document\PaymentReceived;
+use App\Events\Document\PaymentReceived;
 use App\Http\Requests\Portal\InvoicePayment as PaymentRequest;
 use App\Models\Document\Document;
 use Illuminate\Http\Request;
+use Barryvdh\Debugbar\Facade as Debugbar;
 
 class Payment extends PaymentController
 {
@@ -66,5 +67,20 @@ class Payment extends PaymentController
         }
 
         return response()->json($response);
+    }
+
+    /**
+     * Show confirm url 
+     */
+    protected function getConfirmUrl(Document $invoice)
+    {
+        if (!Auth::check())
+            return '';
+
+        Debugbar::info(Auth::user()->companies());
+        Debugbar::info($invoice);
+
+        $confirm_url = parent::getConfirmUrl($invoice);
+        return $confirm_url;
     }
 }
