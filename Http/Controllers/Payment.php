@@ -78,7 +78,7 @@ class Payment extends PaymentController
         if (!Auth::check())
             return '';
 
-        Auth::user()->companies()->map(function ($entity) {
+        Auth::user()->companies()->get()->map(function ($entity) {
             Debugbar::info($entity);
         });
         // Debugbar::info(Auth::user()->companies());
