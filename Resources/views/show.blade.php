@@ -5,7 +5,14 @@
         @endif
 
         @if (!empty($setting['description']))
-            <div class="card card-body bg-light">{{ $setting['description'] }}</div>
+            <div class="card card-body">
+                <p class="card-text">
+                    @php
+                        var_dump($setting['description']);
+                    @endphp
+                    {{ $setting['description'] }}
+                </p>
+            </div>
         @endif
     </div>
     <br>
