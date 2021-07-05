@@ -72,7 +72,7 @@ class Payment extends PaymentController
     /**
      * Show confirm url 
      */
-    protected function getConfirmUrl(Document $invoice)
+    public function getConfirmUrl(Document $invoice)
     {
         if (!Auth::check())
             return '';
