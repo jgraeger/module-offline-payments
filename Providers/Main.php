@@ -3,6 +3,7 @@
 namespace Modules\OfflinePayments\Providers;
 
 use Illuminate\Support\ServiceProvider as Provider;
+use Illuminate\Support\Facades\Blade as Blade;
 use Modules\OfflinePayments\Parser\Markdown as Markdown;
 
 class Main extends Provider
