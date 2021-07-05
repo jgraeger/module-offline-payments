@@ -6,30 +6,32 @@
 
         @if (!empty($setting['description']))
 	    <div class="card card-body">
-                <p class="card-text">
+            <p class="card-text">
                 @markdown($setting['description'])
-                </p>
-            </div>
+            </p>
+        </div>
         @endif
     </div>
     <br>
+    
+    @if (Auth::check() && Auth::user()->contact_id === $invoice->contact_id)
+        <div class="buttons">
+            <div class="pull-right">
+                {!! Form::open([
+                    'url' => $confirm_url,
+                    'id' => 'redirect-form',
+                    'role' => 'form',
+                    'autocomplete' => "off",
+                    'novalidate' => 'true'
+                ]) !!}
+                    <button @click="onRedirectConfirm" type="button" id="button-confirm" class="btn btn-success">
+                        {{ trans('general.confirm') }}
+                    </button>
+                    {!! Form::hidden('payment_method', $setting['code']) !!}
+                    {!! Form::hidden('type', 'income') !!}
 
-    <div class="buttons">
-        <div class="pull-right">
-            {!! Form::open([
-                'url' => $confirm_url,
-                'id' => 'redirect-form',
-                'role' => 'form',
-                'autocomplete' => "off",
-                'novalidate' => 'true'
-            ]) !!}
-                <button @click="onRedirectConfirm" type="button" id="button-confirm" class="btn btn-success">
-                    {{ trans('general.confirm') }}
-                </button>
-                {!! Form::hidden('payment_method', $setting['code']) !!}
-                {!! Form::hidden('type', 'income') !!}
-
-            {!! Form::close() !!}
+                {!! Form::close() !!}
+            </div>
         </div>
-    </div>
+    @endif
 </div>
