@@ -2,6 +2,7 @@
 
 namespace Modules\OfflinePayments\Parser;
 
+use \ParsedownExtra;
 
 class Markdown extends ParsedownExtra
 {
