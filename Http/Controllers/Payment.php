@@ -78,7 +78,10 @@ class Payment extends PaymentController
         if (!Auth::check())
             return '';
 
-        Debugbar::info(Auth::user()->companies());
+        Auth::user()->companies()->map(function ($entity) {
+            Debugbar::info($entity);
+        });
+        // Debugbar::info(Auth::user()->companies());
         Debugbar::info($invoice);
 
         $confirm_url = parent::getConfirmUrl($invoice);
