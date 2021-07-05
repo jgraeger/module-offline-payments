@@ -7,6 +7,7 @@ use App\Events\Document\PaymentReceived;
 use App\Http\Requests\Portal\InvoicePayment as PaymentRequest;
 use App\Models\Document\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\Debugbar\Facade as Debugbar;
 
 class Payment extends PaymentController
