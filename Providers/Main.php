@@ -3,6 +3,7 @@
 namespace Modules\OfflinePayments\Providers;
 
 use Illuminate\Support\ServiceProvider as Provider;
+use Modules\OfflinePayments\Parser\Markdown as Markdown;
 
 class Main extends Provider
 {
@@ -13,6 +14,10 @@ class Main extends Provider
      */
     public function boot()
     {
+        Blade::directive(Markdown::class, function ($expression) {
+            return "<?php echo app('markdown-parser')->text($expression); ?>";
+        });
+
         $this->loadTranslations();
         $this->loadViews();
     }
@@ -25,6 +30,10 @@ class Main extends Provider
     public function register()
     {
         $this->loadRoutes();
+
+        $this->app->singleton('markdown-parser', function () {
+            return new Markdown();
+        });
     }
 
     /**

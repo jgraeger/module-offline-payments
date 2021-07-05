@@ -7,7 +7,7 @@
         @if (!empty($setting['description']))
 	    <div class="card card-body">
                 <p class="card-text">
-		    {{!! (new ParsedownExtra)->text($setting['description'])  !!}}
+                @markdown($setting['description'])
                 </p>
             </div>
         @endif

@@ -3,7 +3,7 @@
 namespace Modules\OfflinePayments\Parser;
 
 
-class MarkdownParser extends ParsedownExtra
+class Markdown extends ParsedownExtra
 {
     protected function inlineEmphasis($Excerpt)
     {
